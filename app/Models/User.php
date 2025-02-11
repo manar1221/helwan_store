@@ -22,6 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
+        'verification_code',
+        'approved_state',
     ];
 
     /**
@@ -42,11 +44,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function products(){
         return $this->hasMany(Product::class,'user_id');
     }
-    
+
     // use Laravel\Sanctum\PersonalAccessToken;
 
     // public function tokens()

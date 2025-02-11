@@ -9,7 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
-use Laravel\Sanctum\PersonalAccessToken;
+
+use function Ramsey\Uuid\v1;
 
 class RegisterController extends BaseController
 {
@@ -38,20 +39,24 @@ class RegisterController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $input['verification_code'] = random_int(100000, 999999);
-        $input['approved_state'] = 0;
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => bcrypt($request->password),
+            'approved_state' => 0,
+        ]);
 
-        $user = User::create($input);
+        $verificationCode = random_int(10000, 99999);
+        $user->verification_code = $verificationCode;
+        $user->save();
 
-        // Send verification email
-        Mail::send('auth.verify-email', ['code' => $input['verification_code']], function ($message) use ($request) {
+        Mail::send('auth.verify-email', ['code' => $verificationCode], function ($message) use ($request) {
             $message->to($request->email)
-                ->subject('Verification Code');
+                ->subject('Your OTP Verification Code');
         });
 
-        return $this->sendResponse(['message' => 'User registered successfully. Please verify your email.'], 'User registered successfully.');
+        return $this->sendResponse(['message' => 'User registered successfully. Please check your email for the verification code.', 'email' => $user->email], 'User registered successfully.');
     }
 
     /**
@@ -68,10 +73,7 @@ class RegisterController extends BaseController
                 return $this->sendError('Your account is not verified. Please check your email.', ['error' => 'Not verified']);
             }
 
-            // $token = $user->createToken('remember_token')->plainTextToken;
-
             return $this->sendResponse([
-                // 'token' => $token,
                 'name' => $user->name,
                 'id' => $user->id,
                 'email' => $user->email,
@@ -106,9 +108,8 @@ class RegisterController extends BaseController
         }
 
         $user->approved_state = 1;
-        $user->verification_code = null;
         $user->save();
 
-        return $this->sendResponse(['message' => 'Email verified successfully.'], 'Email verified successfully.');
+        return $this->sendResponse(['message' => 'Email verified successfully. You can now log in.'], 'Email verified successfully.');
     }
 }
