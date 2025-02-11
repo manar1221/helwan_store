@@ -13,7 +13,16 @@
         .wishlisted i{
             color: #fff !important;
         }
+        .default-img {
+            width: 180px;
+            height: 200px; /* Default height */
+        }
+        @media only screen and (max-width: 768px) {
+            .default-img {
+              height: 120px; 
+        }
     </style>
+
 <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -67,6 +76,9 @@
                                             <li><a class="{{ $orderBy == 'Sort By Newness' ? 'active': '' }}" href="#" wire:click.prevent="changeOrderBy('Sort By Newness')">{{__('mycustom.newness')}}</a></li>
                                         </ul>
                                     </div>
+                                    <div class="col-md-12 pt-5">
+                                        <a href="{{ route('admin.product.add') }}" class="btn btn-success float-end">{{__('mycustom.addnewproduct')}}</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +92,7 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="{{ route('product.details' ,['slug'=>$product->slug]) }}">
-                                                    <img class="default-img" src="{{ asset('assets/imgs/products')}}/{{$product->image}}" alt="" width="180" height="250">
+                                                    <img class="default-img sora" src="{{ asset('assets/imgs/products')}}/{{$product->image}}" alt="" width="180">
                                                 {{-- <img class="hover-img" src="{{ asset('assets/imgs/shop/product-')}}{{ $product->id }}-2.jpg" alt="{{ ($product->name) }}"> --}}
                                             </a>
                                         </div>
@@ -103,14 +115,14 @@
                                             <span>{{ $product->sale_price }}{{__('mycustom.LE')}}</span>
                                             <span class="old-price">{{ $product->regular_price }}{{__('mycustom.LE')}}</span>
                                         </div>
-                                        <div class="product-action-1 show">
+                                       {{-- <div class="product-action-1 show">
                                             @if ($witems->contains($product->id))
                                                 <a aria-label="Remove From Wishlist" class="action-btn hover-up wishlisted" href="#" wire:click.prevent="removeFromWishlist({{ $product->id }})"><i class="fi-rs-heart"></i></a>
                                             @else
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i class="fi-rs-heart"></i></a>
                                             @endif
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="#" wire:click.prevent="store({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -234,6 +246,7 @@
             </div>
         </section>
     </main>
+
 </div>
 
 @push('scripts')

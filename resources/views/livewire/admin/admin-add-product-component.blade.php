@@ -44,10 +44,18 @@
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
+                                            <!--<div class="md-3 mt-3">-->
+                                            <!--    <label for="slug" class="from-lable">{{__('mycustom.slug')}}</label>-->
+                                            <!--    <input type="text" name="slug" class="from-control" placeholder="{{__('mycustom.enterproductslug')}}" wire:model="slug">-->
+                                            <!--    @error('slug')-->
+                                            <!--        <p class="text-danger">{{ $message }}</p>-->
+                                            <!--    @enderror-->
+                                            <!--</div>-->
+                                            
                                             <div class="md-3 mt-3">
-                                                <label for="slug" class="from-lable">{{__('mycustom.slug')}}</label>
-                                                <input type="text" name="slug" class="from-control" placeholder="{{__('mycustom.enterproductslug')}}" wire:model="slug">
-                                                @error('slug')
+                                                <label for="phone" class="from-lable">{{__('mycustom.phone')}} </label>
+                                                <input type="number" id="phone" name="phone" class="from-control" placeholder="{{__('mycustom.phone')}}" wire:model="phone">
+                                                @error('phone')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
@@ -69,7 +77,7 @@
                                             </div>
 
                                             <div class="md-3 mt-3">
-                                                <label for="regular_price" class="from-lable">{{__('mycustom.regularprice')}}</label>
+                                                <label for="regular_price" class="from-lable">{{__('mycustom.regularprice')}} </label>
                                                 <input type="text" name="regular_price" class="from-control" placeholder="{{__('mycustom.enterregularprice')}}" wire:model="regular_price">
                                                 @error('regular_price')
                                                     <p class="text-danger">{{ $message }}</p>
@@ -77,20 +85,20 @@
                                             </div>
 
                                             <div class="md-3 mt-3">
-                                                <label for="sale_price" class="from-lable">{{__('mycustom.saleprice')}}</label>
+                                                <label for="sale_price" class="from-lable">{{__('mycustom.saleprice')}} </label>
                                                 <input type="text" name="sale_price" class="from-control" placeholder="{{__('mycustom.entersaleprice')}}" wire:model="sale_price">
                                                 @error('sale_price')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
 
-                                            <div class="md-3 mt-3">
-                                                <label for="sku" class="from-lable">{{__('mycustom.sku')}}</label>
-                                                <input type="text" name="sku" class="from-control" placeholder="{{__('mycustom.entersku')}}" wire:model="sku">
-                                                @error('sku')
-                                                    <p class="text-danger">{{ $message }}</p>
-                                                @enderror
-                                            </div>
+                                            <!--<div class="md-3 mt-3">-->
+                                            <!--    <label for="sku" class="from-lable">{{__('mycustom.sku')}}</label>-->
+                                            <!--    <input type="text" name="sku" class="from-control" placeholder="{{__('mycustom.entersku')}}" wire:model="sku">-->
+                                            <!--    @error('sku')-->
+                                            <!--        <p class="text-danger">{{ $message }}</p>-->
+                                            <!--    @enderror-->
+                                            <!--</div>-->
 
                                             <div class="md-3 mt-3">
                                                 <label for="stock_status" class="from-lable" wire:model="stock_status">{{__('mycustom.stockstatus')}}</label>
@@ -115,7 +123,7 @@
                                             </div>
 
                                             <div class="md-3 mt-3">
-                                                <label for="quantity" class="from-lable">{{__('mycustom.quantity')}}</label>
+                                                <label for="quantity" class="from-lable">{{__('mycustom.quantity')}} </label>
                                                 <input type="text" name="quantity" class="from-control" placeholder="{{__('mycustom.enterproductquantity')}}" wire:model="quantity">
                                                 @error('quantity')
                                                     <p class="text-danger">{{ $message }}</p>

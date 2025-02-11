@@ -12,7 +12,7 @@
                 <div class="container">
                     <div class="breadcrumb">
                         <a href="/" rel="nofollow">{{__('mycustom.home')}}</a>
-                        <span></span> {{__('mycustom.addnewblog')}}
+                        <span></span> الوظائف
                     </div>
                 </div>
             </div>
@@ -25,10 +25,10 @@
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col-md-6">
-                                               {{__('mycustom.addnewblog')}}
+                                               إضافة وظيفة 
                                             </div>
                                             <div class="col-md-6">
-                                                <a href="{{ route('admin.blogs') }}" class="btn btn-success float-end">{{__('mycustom.allblogs')}}</a>
+                                                <a href="{{ route('admin.blogs') }}" class="btn btn-success float-end"> الوظائف </a>
                                             </div>
                                         </div>
                                     </div>

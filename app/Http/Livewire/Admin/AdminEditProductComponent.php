@@ -19,12 +19,13 @@ class AdminEditProductComponent extends Component
     public $description;
     public $regular_price;
     public $sale_price;
-    public $sku;
+    
     public $stock_status = 'instock';
     public $featured = 0;
     public $quantity;
     public $image;
     public $category_id;
+    public $phone;
 
     public $newimage;
 
@@ -38,12 +39,13 @@ class AdminEditProductComponent extends Component
         $this->description = $product->description;
         $this->regular_price = $product->regular_price;
         $this->sale_price = $product->sale_price;
-        $this->sku = $product->SKU;
+        
         $this->stock_status = $product->stock_status;
         $this->featured  = $product->featured;
         $this->quantity = $product->quantity;
         $this->image = $product->image;
         $this->category_id = $product->category_id;
+        $this->phone = $product->phone;
     }
 
     public function generateSlug()
@@ -60,11 +62,12 @@ class AdminEditProductComponent extends Component
             'description' => 'required',
             'regular_price' => 'required',
             'sale_price' => 'required',
-            'sku' => 'required',
+            
             'featured' => 'required',
             'quantity' => 'required',
             'image' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'phone' => 'required'
         ]);
         $product = Product::find($this->product_id);
         $product->name =$this->name ;
@@ -73,7 +76,8 @@ class AdminEditProductComponent extends Component
         $product->description =$this->description ;
         $product->regular_price =$this->regular_price ;
         $product->sale_price =$this->sale_price ;
-        $product->SKU =$this->sku ;
+        $product->phone =$this->phone ;
+        
         $product->stock_status =$this->stock_status ;
         $product->featured =$this->featured ;
         $product->quantity =$this->quantity ;

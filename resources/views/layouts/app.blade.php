@@ -26,10 +26,13 @@
                         <div class="header-info">
                         <ul>
                                 <li>
-                                    <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
-                                    <ul class="language-dropdown">
-                                        <li><a href="#">العربية</a></li>
-                                    </ul>
+                                    <a  href="{{route('languageConverter','en')}}"> <i class="fi-rs-world"></i> {{__('mycustom.english')}} </i></a>
+                                    <!--<ul class="language-dropdown">-->
+                                    <!--    <li><a href="{{route('languageConverter','ar')}}">العربية</a></li>-->
+                                    <!--</ul>-->
+                                </li>
+                                <li>
+                                    <a  href="{{route('languageConverter','ar')}}"> <i class="fi-rs-world"></i> العربية </i></a>
                                 </li>
                             </ul>
                         </div>
@@ -66,11 +69,11 @@
                         <a href="/"><img src="{{ asset('assets/imgs/logo/logo.png') }}" alt="logo"></a>
                     </div>
                     <div class="header-right">
-                        @livewire('header-search-component')
+                         @livewire('header-search-component') 
                         <div class="header-action-right">
                             <div class="header-action-2">
-                                @livewire('wishlist-icon-component')
-                                @livewire('cart-icon-component')
+                                {{-- @livewire('wishlist-icon-component')
+                                @livewire('cart-icon-component') --}}
                             </div>
                         </div>
                     </div>
@@ -80,8 +83,8 @@
         <div class="header-bottom header-bottom-bg-color sticky-bar">
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
-                    <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="/"><img src="{{ asset('assets/imgs/logo/logo.png') }}" alt="logo"></a>
+                    <div class="logo logo-width-2 d-block d-lg-none">
+                        <a href="/"><img src="{{ asset('assets/imgs/logo/logophone.png') }}" alt="logo" style="height: 60px; width: 60px;"></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-categori-wrap d-none d-lg-block">
@@ -93,10 +96,12 @@
                             <nav>
                                 <ul>
                                     <li><a href="/">{{__('mycustom.home')}} </a></li>
+                                    <li><a href="{{ route('offer') }}"> خصومات </a></li>
                                     <li><a href="{{ route('shop') }}">{{__('mycustom.shop')}}</a></li>
+                                    <!--<li><a href="{{ route('blog') }}">{{__('mycustom.jobs')}}</a></li>-->
                                     <li><a href="{{ route('home.index') }}#newarrivals">{{__('mycustom.newarrivals')}}</a></li>
-                                    <li><a href="{{ route('blog') }}">{{__('mycustom.blogs')}}</a></li>
                                     <li><a href="{{ route('home.index') }}#ourproducts"> {{__('mycustom.ourproducts')}}</a></li>
+                                    <li><a href="{{ route('home.index') }}#helwanguide"> {{__('mycustom.helwanguide')}}</a></li>
                                     <li><a href="#footer">{{__('mycustom.contact')}}</a></li>
                                     @auth
                                     <li><a href="#">{{__('mycustom.myaccount')}}<i class="fi-rs-angle-down"></i></a>
@@ -104,22 +109,25 @@
                                             <ul class="sub-menu">
                                                 {{-- <li><a href="{{ route('admin.dashbord') }}">Dashboard</a></li> --}}
                                                 <li><a href="{{ route('admin.products') }}">{{__('mycustom.products')}}</a></li>
-                                                <li><a href="{{ route('admin.blogs') }}">{{__('mycustom.blogs')}}</a></li>
+                                                <li><a href="{{ route('admin.blogs') }}">{{__('mycustom.jobs')}}</a></li>
                                                 <li><a href="{{ route('admin.categories') }}">{{__('mycustom.categories')}}</a></li>
                                                 <li><a href="{{ route('admin.home.slider') }}">{{__('mycustom.slider')}}</a></li>
                                             </ul>
                                         @elseif (Auth::user()->utype == 'PRD')
                                             <ul class="sub-menu">
                                                 <li><a href="{{ route('admin.products') }}">{{__('mycustom.products')}}</a></li>
+                                                <li><a href="{{ route('admin.blogs') }}">{{__('mycustom.jobs')}}</a></li>
+                                                {{-- <li><a href="{{ route('shop.wishlist') }}">{{__('mycustom.mywishlist')}}</a></li>
+                                                <li><a href="{{ route('shop.cart') }}">{{__('mycustom.cart')}}</a></li> --}}
                                             </ul>
                                         @elseif (Auth::user()->utype == 'BLG')
                                             <ul class="sub-menu">
-                                                <li><a href="{{ route('admin.blogs') }}">{{__('mycustom.blogs')}}</a></li>
+                                                <li><a href="{{ route('admin.blogs') }}">{{__('mycustom.jobs')}}</a></li>
                                             </ul>
                                         @else
                                             <ul class="sub-menu">
-                                                <li><a href="{{ route('shop.wishlist') }}">{{__('mycustom.mywishlist')}}</a></li>
-                                                <li><a href="{{ route('shop.cart') }}">{{__('mycustom.cart')}}</a></li>
+                                                {{-- <li><a href="{{ route('shop.wishlist') }}">{{__('mycustom.mywishlist')}}</a></li>
+                                                <li><a href="{{ route('shop.cart') }}">{{__('mycustom.cart')}}</a></li> --}}
                                                 {{-- <li><a href="{{ route('user.dashbord') }}">Dashboard</a></li> --}}
                                             </ul>
                                         @endif
@@ -129,13 +137,21 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="hotline d-none d-lg-block">
-                        <p><i class="fi-rs-smartphone"></i><span>{{__('mycustom.phone')}}</span> +201110487092 </p>
-                    </div>
+                    <!--<div class="hotline d-none d-lg-block">-->
+                    <!--    <p><i class="fi-rs-smartphone"></i><span>{{__('mycustom.phone')}}</span> +201110487092 </p>-->
+                    <!--</div>-->
                     <div class="header-action-right d-block d-lg-none">
                         <div class="header-action-2">
-                            @livewire('wishlist-icon-component')
-                            @livewire('cart-icon-component')
+                            @auth
+
+                            @else
+                            <div class="row me-2">
+                                <a href="{{route('login')}}" class="col-12 btn btn-primary float-end p-1">{{__('mycustom.login')}}</a>
+                                {{-- <a href="{{route('register')}}" class="col-5 btn btn-primary float-end p-0">{{__('mycustom.signup')}}</a> --}}
+                            </div>
+                            @endif
+                            {{-- @livewire('wishlist-icon-component')
+                            @livewire('cart-icon-component') --}}
                             <div class="header-action-icon-2 d-block d-lg-none">
                                 <div class="burger-icon burger-icon-white">
                                     <span class="burger-icon-top"></span>
@@ -174,66 +190,72 @@
                     </div>
                     <!-- mobile menu start -->
                     <nav>
-                        <ul>
-                            <li><a href="/">{{__('mycustom.home')}} </a></li>
-                            <li><a href="{{ route('shop') }}">{{__('mycustom.shop')}}</a></li>
-                            <li><a href="{{ route('home.index') }}#newarrivals">{{__('mycustom.newarrivals')}} </a></li>
-                            <li><a href="{{ route('blog') }}">{{__('mycustom.blogs')}}</a></li>
-                            <li><a href="{{ route('home.index') }}#ourproducts">{{__('mycustom.ourproducts')}} </a></li>
-                            <li><a href="#footer">Contact</a></li>
-                            @auth
-                            <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
+                        <ul class="mobile-menu">
+                             @auth
+                            <li  class="menu-item-has-children"><span class="menu-expand"></span><a href="#">{{__('mycustom.myaccount')}}</a>
                                 @if(Auth::user()->utype == 'ADM')
-                                    <ul class="sub-menu">
-                                        {{-- <li><a href="{{ route('admin.dashbord') }}">Dashboard</a></li> --}}
+                                    <ul class="dropdown">
                                         <li><a href="{{ route('admin.products') }}">{{__('mycustom.products')}}</a></li>
+                                        <li><a href="{{ route('admin.blogs') }}">{{__('mycustom.blogs')}}</a></li>
                                         <li><a href="{{ route('admin.categories') }}">{{__('mycustom.categories')}}</a></li>
                                         <li><a href="{{ route('admin.home.slider') }}">{{__('mycustom.slider')}}</a></li>
                                     </ul>
+                                @elseif(Auth::user()->utype == 'PRD')
+                                    <ul class="dropdown">
+                                        <li><a href="{{ route('admin.products') }}">{{__('mycustom.products')}}</a></li>
+                                        <li><a href="{{ route('admin.blogs') }}">{{__('mycustom.blogs')}}</a></li>
+                                        {{-- <li><a href="{{ route('shop.wishlist') }}">{{__('mycustom.mywishlist')}}</a></li>
+                                        <li><a href="{{ route('shop.cart') }}">{{__('mycustom.cart')}}</a></li> --}}
+                                    </ul>
                                 @else
-                                    <ul class="sub-menu">
-                                        <li><a href="{{ route('shop.wishlist') }}">{{__('mycustom.mywishlist')}}</a></li>
-                                        <li><a href="{{ route('shop.cart') }}">{{__('mycustom.cart')}}</a></li>
-                                        {{-- <li><a href="{{ route('user.dashbord') }}">Dashboard</a></li> --}}
+                                    <ul class="dropdown">
+                                        {{-- <li><a href="{{ route('shop.wishlist') }}">{{__('mycustom.mywishlist')}}</a></li>
+                                        <li><a href="{{ route('shop.cart') }}">{{__('mycustom.cart')}}</a></li> --}}
                                     </ul>
                                 @endif
                             </li>
                             @endif
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">{{__('mycustom.language')}} </a>
+                                <ul class="dropdown">
+                                    <li>
+                                        <a  href="{{route('languageConverter','en')}}" > <i class="fi-rs-world"></i> english </i></a>
+                                    </li>
+                                    <li>
+                                        <a  href="{{route('languageConverter','ar')}}" > <i class="fi-rs-world"></i> العربية </i></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="/" class="">{{__('mycustom.home')}} </a></li>
+                            <li><a href="{{ route('shop') }} " class="">{{__('mycustom.shop')}}</a></li>
+                            <li><a href="{{ route('home.index') }}#newarrivals" class="">{{__('mycustom.newarrivals')}} </a></li>
+                            <li><a href="{{ route('blog') }}" class="">{{__('mycustom.blogs')}}</a></li>
+                            <li><a href="{{ route('home.index') }}#ourproducts" class="">{{__('mycustom.ourproducts')}} </a></li>
+                            <li><a href="#footer" class="">{{__('mycustom.contact')}}</a></li>
                         </ul>
                     </nav>
                     <!-- mobile menu end -->
                 </div>
                 <div class="mobile-header-info-wrap mobile-header-border">
-                    {{-- <div class="single-mobile-header-info mt-30">
-                        <a href="contact.html"> Our location </a>
-                    </div> --}}
-                    {{-- <div class="single-mobile-header-info">
-                        <a href="{{ route('login') }}">{{__('mycustom.login')}} </a>
-                    </div>
-                    <div class="single-mobile-header-info">
-                        <a href="{{ route('register') }}">{{__('mycustom.signup')}}</a>
-                    </div> --}}
                     @auth
-                            <ul>
-                                <li><i class="fi-rs-user"></i> {{ Auth::user()->name }}  /
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">{{__('mycustom.logout')}}</a>
-                                    </form>
-                                </li>
-                            </ul>
-                            @else
-                            <ul>
-                                <li>
-                                    <i class="fi-rs-key"></i>
-                                    <a href="{{ route('login') }}">{{__('mycustom.login')}}</a>
-                                    <br>
-                                    <a href="{{ route('register') }}">{{__('mycustom.signup')}}</a>
-                                </li>
-                            </ul>
-                            @endif
+                        <ul>
+                            <li><i class="fi-rs-user"></i> {{ Auth::user()->name }}
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="fs-4" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">{{__('mycustom.logout')}}</a>
+                                </form>
+                            </li>
+                        </ul>
+                        @else
+                            <div class="single-mobile-header-info">
+                                <a href="{{ route('login') }}">{{__('mycustom.login')}}</a>
+                            </div>
+
+                            <div class="single-mobile-header-info">
+                                <a href="{{ route('register') }}">{{__('mycustom.signup')}}</a>
+                            </div>
+                    @endif
                     <div class="single-mobile-header-info">
-                        <a href="#">+201110487092 </a>
+                        <p href="#">+201121998183 </p>
                     </div>
                 </div>
                 <div class="mobile-social-icon">
@@ -262,22 +284,28 @@
 
                     <div class="col-lg-2  col-md-3">
                         <h5 class="widget-title wow fadeIn animated">{{__('mycustom.contact')}}</h5>
-                            <p class="wow fadeIn animated">
+                            {{-- <p class="wow fadeIn animated">
                                 <strong>{{__('mycustom.address')}}: </strong>45A helwan al-maraghi
                             </p>
                             <p class="wow fadeIn animated">
                                 <strong>{{__('mycustom.phone')}}: </strong>+201110487092
-                            </p>
+                            </p> --}}
                             <p class="wow fadeIn animated">
-                                <strong>{{__('mycustom.email')}}: </strong>info@eltasmem.com
+                                <strong>{{__('mycustom.email')}}: </strong>
+                                <br>info@eltasmem.com
                             </p>
+
+                            {{-- <p class="wow fadeIn animated">
+                                <strong> الفيسبوك: </strong>
+                                <br>www.facebook.com/helwanstoree
+                            </p> --}}
 
                     </div>
 
                     <div class="col-lg-2  col-md-3">
                         <h5 class="widget-title wow fadeIn animated">{{__('mycustom.myacount')}}</h5>
                         <ul class="footer-list wow fadeIn animated">
-                            <li><a href="{{ route('shop.wishlist') }}">{{__('mycustom.mywishlist')}}</a></li>
+                            {{-- <li><a href="{{ route('shop.wishlist') }}">{{__('mycustom.mywishlist')}}</a></li> --}}
                             {{-- <li><a href="{{ route('shop.cart') }}">{{__('mycustom.cart')}}</a></li> --}}
                             <li><a href="{{ route('shop') }}">{{__('mycustom.shop')}}</a></li>
                             <li><a href="{{ route('home.index') }}#categories">{{__('mycustom.categories')}}</a></li>
@@ -285,12 +313,18 @@
                     </div>
 
                     <div class="col-lg-4 mob-center">
-                        <h5 class="widget-title wow fadeIn animated">{{__('mycustom.installapp')}}</h5>
                         <div class="row">
+                            <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
+                                <h5>{{__('mycustom.followus')}}</h5>
+                                <a href="https://www.facebook.com/helwanstoree"><img src="{{ asset('assets/imgs/theme/icons/icon-facebook.svg') }}" alt=""></a>
+                                {{-- <a href="#"><img src="{{ asset('assets/imgs/theme/icons/icon-twitter.svg') }}" alt=""></a> --}}
+                                <a href="#"><img src="{{ asset('assets/imgs/theme/icons/icon-instagram.svg') }}" alt=""></a>
+                            </div>
+                            <h5 class="widget-title wow fadeIn animated">{{__('mycustom.installapp')}}</h5>
                             <div class="col-md-8 col-lg-12">
-                                <p class="wow fadeIn animated">{{__('mycustom.app')}}</p>
+                                {{-- <p class="wow fadeIn animated">{{__('mycustom.app')}}</p> --}}
                                 <div class="download-app wow fadeIn animated mob-app">
-                                    <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="{{ asset('assets/imgs/theme/app-store.jpg') }}" alt=""></a>
+                                    {{-- <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="{{ asset('assets/imgs/theme/app-store.jpg') }}" alt=""></a> --}}
                                     <a href="#" class="hover-up"><img src="{{ asset('assets/imgs/theme/google-play.jpg') }}" alt=""></a>
                                 </div>
                             </div>
@@ -298,12 +332,6 @@
                                 <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
                                 <img class="wow fadeIn animated" src="assets/imgs/theme/payment-method.png" alt="">
                             </div> --}}
-                            <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                                <h5>{{__('mycustom.followus')}}</h5>
-                                <a href="#"><img src="{{ asset('assets/imgs/theme/icons/icon-facebook.svg') }}" alt=""></a>
-                                <a href="#"><img src="{{ asset('assets/imgs/theme/icons/icon-twitter.svg') }}" alt=""></a>
-                                <a href="#"><img src="{{ asset('assets/imgs/theme/icons/icon-instagram.svg') }}" alt=""></a>
-                            </div>
                         </div>
                     </div>
 
@@ -321,9 +349,11 @@
                     </p>
                 </div> --}}
                 <div class="col-lg-6">
-                    <p class="text-lg-end text-start font-sm text-muted mb-0">
-                        &copy; <strong class="text-brand">Helwan.store</strong> All rights reserved
-                    </p>
+                    <a href="https://eltasmem.com/">
+                        <p class="text-lg-end text-start font-sm text-muted mb-0">
+                            &copy; <strong class="text-brand">El-Tasmem.com</strong> All rights reserved
+                        </p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -355,5 +385,8 @@
 @livewireScripts
 @stack('scripts')
 </body>
-
 </html>
+
+
+
+

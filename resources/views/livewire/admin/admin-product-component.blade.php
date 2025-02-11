@@ -39,38 +39,61 @@
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <!--<th>#</th>-->
+                                                    <th>{{__('mycustom.username')}}</th>
                                                     <th>{{__('mycustom.image')}}</th>
                                                     <th>{{__('mycustom.name')}}</th>
                                                     <th>{{__('mycustom.stockstatus')}}</th>
                                                     <th>{{__('mycustom.price')}}</th>
                                                     <th>{{__('mycustom.category')}}</th>
+                                                    <th>{{__('mycustom.phone')}}</th>
                                                     <th>{{__('mycustom.date')}}</th>
                                                     <th>{{__('mycustom.action')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @php
-                                                    $i = ($products->currentPage()-1)*$products->perPage();
+                                                    $i = ($allproducts->currentPage()-1)*$allproducts->perPage();
                                                 @endphp
-                                                @foreach ($products as $product)
-                                                <tr>
-                                                    <td>{{ ++$i }}</td>
-                                                    <td><img src="{{ asset('assets/imgs/products')}}/{{$product->image}}" alt="{{ $product->name }}" width="60"></td>
-                                                    <td>{{ $product->name }}</td>
-                                                    <td>{{ $product->stock_status }}</td>
-                                                    <td>{{ $product->regular_price }}</td>
-                                                    <td>{{ $product->category->name }}</td>
-                                                    <td>{{ $product->created_at }}</td>
-                                                    <td>
-                                                        <a href="{{ route('admin.product.edit',['product_id'=>$product->id])}}" class="text-info">{{__('mycustom.edit')}}</a>
-                                                        <a href="#" onclick="deleteConfirmation({{ $product->id }})" class="text-danger">{{__('mycustom.delete')}}</a>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
+                                                @if(Auth::user()->utype == 'ADM')
+                                                    @foreach ($allproducts as $all)
+                                                        <tr>
+                                                            <!--<td>{{ $all->id }}</td>-->
+                                                            <td>{{ $all->user_id }}</td>
+                                                            <td><img src="{{ asset('assets/imgs/products')}}/{{$all->image}}" alt="{{ $all->name }}" width="60"></td>
+                                                            <td>{{ $all->name }}</td>
+                                                            <td>{{ $all->stock_status }}</td>
+                                                            <td>{{ $all->regular_price }}</td>
+                                                            <td>{{ $all->category->name }}</td>
+                                                            <td>{{ $all->phone }}</td>
+                                                            <td>{{ $all->created_at }}</td>
+                                                            <td>
+                                                                <a href="{{ route('admin.product.edit',['product_id'=>$all->id])}}" class="text-info">{{__('mycustom.edit')}}</a>
+                                                                <a href="#" onclick="deleteConfirmation({{ $all->id }})" class="text-danger">{{__('mycustom.delete')}}</a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    @foreach ($user->products as $product)
+                                                    <tr>
+                                                        <td>{{ $product->id }}</td>
+                                                        <td><img src="{{ asset('assets/imgs/products')}}/{{$product->image}}" alt="{{ $product->name }}" width="60"></td>
+                                                        <td>{{ $product->name }}</td>
+                                                        <td>{{ $product->stock_status }}</td>
+                                                        <td>{{ $product->regular_price }}</td>
+                                                        <td>{{ $product->category->name }}</td>
+                                                        <td>{{ $product->phone }}</td>
+                                                        <td>{{ $product->created_at }}</td>
+                                                        <td>
+                                                            <a href="{{ route('admin.product.edit',['product_id'=>$product->id])}}" class="text-info">{{__('mycustom.edit')}}</a>
+                                                            <a href="#" onclick="deleteConfirmation({{ $product->id }})" class="text-danger">{{__('mycustom.delete')}}</a>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                @endif
                                             </tbody>
                                         </table>
-                                        {{ $products->links() }}
+                                        {{ $allproducts->links() }}
                                     </div>
                                 </div>
                             </div>

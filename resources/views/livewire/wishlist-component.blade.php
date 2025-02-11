@@ -17,6 +17,7 @@
             left:-32%;
         }
     </style>
+
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -69,4 +70,5 @@
             </div>
         </section>
     </main>
+
 </div>

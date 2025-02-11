@@ -121,7 +121,7 @@ return [
 'enterslidesubtitle'=>'Enter Slide Sub Title',
 'enteroffer'=>'Enter Offer',
 'enterslidelink'=>'Enter Slide Link',
-'inactive'=>'InActive',
+'inactive'=>'InActive', 
 'active'=>'Active',
 'enterblogname'=>'Enter Blog Name',
 'alreadyhaveanaccount'=>'Already have an account?',
@@ -153,5 +153,5 @@ return [
 'home'=>'Home',
 'home'=>'Home',
 'home'=>'Home',
-'home'=>'Home',
+'home'=>'Home', 
 ];

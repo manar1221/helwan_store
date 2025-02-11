@@ -64,10 +64,14 @@
                                         <div class="short-desc mb-30">
                                             <p>{{ $product->short_description }}</p>
                                         </div>
+                                        
+                                        <div class="short-desc mb-30">
+                                            <p>{{__('mycustom.phone')}}: {{ $product->phone }}</p>
+                                        </div>
 
 
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                        <div class="detail-extralink">
+                                        {{-- <div class="detail-extralink">
                                             @php
                                                 $witems = Cart::instance('wishlist')->content()->pluck('id');
                                             @endphp
@@ -79,11 +83,11 @@
                                                     <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#nav-tab-three" wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i class="fi-rs-heart"></i></a>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <ul class="product-meta font-xs color-grey mt-50">
-                                            <li class="mb-5">SKU: <a href="#">'{{ $product->SKU }}'</a></li>
-                                            <li>Availability:<span class="in-stock text-success ml-5">{{ $product->quantity }} {{__('mycustom.itemsinstock')}}</span></li>
-                                        </ul>
+                                        </div> --}}
+                                        <!--<ul class="product-meta font-xs color-grey mt-50">-->
+                                        <!--    <li class="mb-5">SKU: <a href="#">'{{ $product->SKU }}'</a></li>-->
+                                        <!--    <li>Availability:<span class="in-stock text-success ml-5">{{ $product->quantity }} {{__('mycustom.itemsinstock')}}</span></li>-->
+                                        <!--</ul>-->
                                     </div>
                                     <!-- Detail Info -->
                                 </div>

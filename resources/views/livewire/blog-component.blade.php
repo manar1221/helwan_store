@@ -1,10 +1,11 @@
 <div>
+
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="/" rel="nofollow">{{__('mycustom.home')}}</a>
-                    <span></span> {{__('mycustom.blogs')}}
+                    <span></span> الوظائف
                 </div>
             </div>
         </div>
@@ -13,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="single-header mb-50">
-                            <h1 class="font-xxl text-brand">{{__('mycustom.ourblog')}}</h1>
+                            <h1 class="font-xxl text-brand"> الوظائف </h1>
                         </div>
                         <div class="loop-grid pr-30">
                             <div class="row">
