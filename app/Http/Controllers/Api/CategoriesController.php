@@ -9,9 +9,17 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends BaseController
 {
-    public function index(){
-        $categories = Category::get();
-        return $this->sendResponse($categories, 'Displaying all categories');
-        // return response()->json( $categories );
+    /**
+     * جلب جميع الفئات
+     */
+    public function getAllCategories(Request $request)
+    {
+        $categories = Category::all();
+
+        if ($categories->isEmpty()) {
+            return $this->sendError('No categories found.', []);
+        }
+
+        return $this->sendResponse($categories, 'Categories retrieved successfully.');
     }
 }

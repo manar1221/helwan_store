@@ -112,4 +112,44 @@ class RegisterController extends BaseController
 
         return $this->sendResponse(['message' => 'Email verified successfully. You can now log in.'], 'Email verified successfully.');
     }
+
+
+    /**
+     * Resend verification code to the user
+     */
+    public function resendVerificationCode(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+
+        // جلب المستخدم
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return $this->sendError('User not found.', ['error' => 'User not found.']);
+        }
+
+        // إذا كان الحساب مفعل بالفعل، لا داعي لإرسال الكود مرة أخرى
+        if ($user->approved_state == 1) {
+            return $this->sendError('This account is already verified.', ['error' => 'Already verified.']);
+        }
+
+        // إنشاء كود تحقق جديد وتحديثه في قاعدة البيانات
+        $verificationCode = random_int(100000, 999999);
+        $user->verification_code = $verificationCode;
+        $user->save();
+
+        // إرسال البريد الإلكتروني مرة أخرى
+        Mail::send('auth.verify-email', ['code' => $verificationCode], function ($message) use ($request) {
+            $message->to($request->email)
+                ->subject('Resend: Your OTP Verification Code');
+        });
+
+        return $this->sendResponse(['message' => 'A new verification code has been sent to your email.'], 'Verification code resent successfully.');
+    }
 }
